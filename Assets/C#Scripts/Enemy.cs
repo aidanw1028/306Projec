@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
         // rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
-    void OnCollisionEnter2D( Collision2D col){
-        if (col.collider == true){
+    void OnTriggerStay2D(Collider2D other){
+        if (other.transform.tag == "Player"){
             Debug.Log("SUP:");
         }
     }
