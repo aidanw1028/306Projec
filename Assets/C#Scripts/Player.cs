@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         Shoot();
-        Debug.Log(Time.time);
     }
 
     void MovePlayer() {
@@ -59,7 +58,7 @@ public class Player : MonoBehaviour
             GameObject a = Instantiate(projectile) as GameObject;
             a.transform.position = transform.position;
 
-            // Sets the firedelay for plyer
+            // Sets the firedelay for player
             fireTime = Time.time + 0.25f;
         }
     }

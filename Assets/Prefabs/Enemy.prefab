@@ -124,6 +124,9 @@ MonoBehaviour:
   moveSpeed: 3
   damage: 25
   damageRate: 1
+  projectile: {fileID: 6098144649034551776, guid: 5a91f4e96806fda4d8bfbda7864d5d58, type: 3}
+  fireRate: 1
+  fireTime: 0
 --- !u!61 &8564750622950891031
 BoxCollider2D:
   m_ObjectHideFlags: 0
