@@ -6,13 +6,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float moveSpeed = 3.0f;
-    [SerializeField] private float damage = 50.0f;
-    [SerializeField] private float damageRate = 1.0f;
+    [SerializeField] private float damage = 25.0f;
+    [SerializeField] private float damageRate = 0.2f;
     private float damageTime;
     // Start is called before the first frame update
   
     void Update() {
-        
     }
 
     void Awake(){
@@ -24,8 +23,9 @@ public class Enemy : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other){
-        if (other.transform.tag == "Player"){
-            Debug.Log("SUP:");
+        if (other.transform.tag == "Player" && Time.time > damageTime){
+            other.transform.GetComponent<Player>().TakeDamage(damage);
+            damageTime = Time.time + damageRate;
         }
     }
 }

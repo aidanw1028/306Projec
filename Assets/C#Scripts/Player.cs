@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float health = 100.0f;
+    [SerializeField] private float health = 500.0f;
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float damage = 50.0f;
     Vector2 playerPos;
@@ -42,9 +42,9 @@ public class Player : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D( Collision2D col){
-        if (col.collider == true){
-            Debug.Log("SUP:");
-        }
-    }
+    // void OnCollisionEnter2D( Collision2D col){
+    //     if (col.collider == true){
+    //         Debug.Log("SUP:");
+    //     }
+    // }
 }

@@ -95,7 +95,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4414967379255871425}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   moveSpeed: 3
-  damage: 50
+  damage: 25
   damageRate: 1
 --- !u!61 &8564750622950891031
 BoxCollider2D:
