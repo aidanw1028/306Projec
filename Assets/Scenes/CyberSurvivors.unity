@@ -299,6 +299,9 @@ MonoBehaviour:
   health: 500
   moveSpeed: 3
   damage: 50
+  projectile: {fileID: 6098144649034551776, guid: 5a91f4e96806fda4d8bfbda7864d5d58, type: 3}
+  fireRate: 0.1
+  fireTime: 0
 --- !u!4 &657645400
 Transform:
   m_ObjectHideFlags: 0
@@ -419,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8564750622950891031, guid: 0a1a0b779cab33540b09fffbf0396982, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a1a0b779cab33540b09fffbf0396982, type: 3}

@@ -7,6 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float health = 500.0f;
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float damage = 50.0f;
+
+    // projectile vars
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private float fireRate = 1.0f;
+    [SerializeField] private float fireTime;
     Vector2 playerPos;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +23,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        Shoot();
+        Debug.Log(Time.time);
     }
 
     void MovePlayer() {
@@ -34,6 +41,9 @@ public class Player : MonoBehaviour
             transform.position += Vector3.right * moveSpeed*Time.deltaTime;
             }
     }
+    /**
+    * Player takes damage if shot
+    */
     public void TakeDamage(float damage) {
         health -=damage;
         if(health<=0) {
@@ -42,9 +52,15 @@ public class Player : MonoBehaviour
 
     }
 
-    // void OnCollisionEnter2D( Collision2D col){
-    //     if (col.collider == true){
-    //         Debug.Log("SUP:");
-    //     }
-    // }
+
+    private void Shoot() {
+        if (Input.GetKey(KeyCode.Space) && Time.time >= fireTime) {
+            // translated 3d instantiating to 2d, I hope you guys don't look too much into how this works
+            GameObject a = Instantiate(projectile) as GameObject;
+            a.transform.position = transform.position;
+
+            // Sets the firedelay for plyer
+            fireTime = Time.time + 0.25f;
+        }
+    }
 }

@@ -14,14 +14,27 @@ public class Enemy : MonoBehaviour
     void Update() {
     }
 
-    void Awake(){
-        
-        // gameObject.AddComponent<BoxCollider2D>();
-
-        // Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
-        // rb.bodyType = RigidbodyType2D.Dynamic;
+    /**
+    * Takes damage when getting shot
+    */
+    public void TakeDamage(float damage){
+        health -= damage;
+        if(health <= 0){
+            Destroy(this.gameObject);
+        }
     }
+    //     private void Shoot() {
+    //         // translated 3d instantiating to 2d, I hope you guys don't look too much into how this works
+    //         GameObject a = Instantiate(projectile) as GameObject;
+    //         a.transform.position = transform.position;
 
+    //         fireTime = Time.time + fireRate;
+        
+    // }
+
+    /**
+    * If the player collides with the enemy, do damage to player for however long the player is withing the enemy
+    */
     void OnTriggerStay2D(Collider2D other){
         if (other.transform.tag == "Player" && Time.time > damageTime){
             other.transform.GetComponent<Player>().TakeDamage(damage);
