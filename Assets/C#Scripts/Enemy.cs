@@ -5,19 +5,19 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float health = 100.0f;
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float moveSpeed = 1.0f;
     [SerializeField] private float damage = 25.0f;
     [SerializeField] private float damageRate = 0.2f;
     private float damageTime;
 
     //projectile vars
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float fireRate = 1.0f;
+    [SerializeField] private EnemyProjectile projectile;
+    [SerializeField] private float fireRate = 3.0f;
     [SerializeField] private float fireTime;
     // Start is called before the first frame update
   
     void Update() {
-        //Shoot();
+        Shoot();
         Move();
     }
 
@@ -30,17 +30,17 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    // private void Shoot() {
+    private void Shoot() {
     //     // translated 3d instantiating to 2d, I hope you guys don't look too much into how this works
-    //     if (GameManager.instance.player) {
-    //         Debug.Log("stuff");
-    //         transform.right = GameManager.instance.player.transform.position - transform.position;
-    //         GameObject a = Instantiate(projectile) as GameObject;
+         if (GameManager.instance.player && Time.time > fireTime) {
+            //         Debug.Log("stuff");
+            //         transform.right = GameManager.instance.player.transform.position - transform.position;
+            EnemyProjectile p = Instantiate(projectile, transform.position, transform.rotation);
     //         a.transform.position = transform.position;
 
-    //         fireTime = Time.time + fireRate;
-    //     }
-    // }
+             fireTime = Time.time + fireRate;
+         }
+     }
 
     /**
     * If the player collides with the enemy, do damage to player for however long the player is withing the enemy
