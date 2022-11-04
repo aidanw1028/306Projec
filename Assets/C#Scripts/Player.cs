@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float damage = 50.0f;
 
     // projectile vars
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float fireRate = 1.0f;
+    [SerializeField] private Projectile projectile;
+    [SerializeField] private float fireRate = 5.0f;
     [SerializeField] private float fireTime;
     Vector2 playerPos;
     // Start is called before the first frame update
@@ -53,13 +53,11 @@ public class Player : MonoBehaviour
 
 
     private void Shoot() {
-        if (Input.GetKey(KeyCode.Space) && Time.time >= fireTime) {
-            // translated 3d instantiating to 2d, I hope you guys don't look too much into how this works
-            GameObject a = Instantiate(projectile) as GameObject;
-            a.transform.position = transform.position;
+        if (Time.time >= fireTime) {
+            Projectile a = Instantiate(projectile, transform.position, transform.rotation);
 
             // Sets the firedelay for player
-            fireTime = Time.time + 0.25f;
+            fireTime = Time.time + fireRate;
         }
     }
 }
