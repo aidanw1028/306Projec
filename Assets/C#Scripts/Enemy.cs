@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
   
     void Update() {
         //Shoot();
-
+        Move();
     }
 
     /**
@@ -45,6 +45,12 @@ public class Enemy : MonoBehaviour
     /**
     * If the player collides with the enemy, do damage to player for however long the player is withing the enemy
     */
+    private void Move() {
+        float step = moveSpeed * Time.deltaTime;
+
+        // move sprite towards the target location
+        transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
+    }
     void OnTriggerStay2D(Collider2D other){
         if (other.transform.tag == "Player" && Time.time > damageTime){
             other.transform.GetComponent<Player>().TakeDamage(damage);
