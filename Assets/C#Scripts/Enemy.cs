@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
          if (GameManager.instance.player && Time.time > fireTime) {
             //         Debug.Log("stuff");
             //         transform.right = GameManager.instance.player.transform.position - transform.position;
-            EnemyProjectile p = Instantiate(projectile, transform.position, transform.rotation);
+            EnemyProjectile p = Instantiate(projectile, transform.position, Quaternion.identity);
     //         a.transform.position = transform.position;
 
              fireTime = Time.time + fireRate;
