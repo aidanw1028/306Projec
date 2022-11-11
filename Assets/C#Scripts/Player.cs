@@ -13,10 +13,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float fireRate = 5.0f;
     [SerializeField] private float fireTime;
     Vector2 playerPos;
+
+    Vector2 TruePlayerPos;
+
+    public Camera mainCam;
     // Start is called before the first frame update
     void Start()
     {
         playerPos = gameObject.transform.position;
+
     }
 
     // Update is called once per frame
@@ -24,6 +29,7 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         Shoot();
+
     }
 
     void MovePlayer() {
@@ -40,6 +46,8 @@ public class Player : MonoBehaviour
             transform.position += Vector3.right * moveSpeed*Time.deltaTime;
             }
     }
+
+
     /**
     * Player takes damage if shot
     */

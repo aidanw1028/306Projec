@@ -13,6 +13,15 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.right * Time.deltaTime * 0.25f;
+        transform.position += Vector3.right * Time.deltaTime * 0.50f;
+    }
+
+    /**
+    *If the player exits the Camera, they die
+    */
+    void OnTriggerExit2D(Collider2D other){
+        if(other.transform.tag == "Player"){
+            other.transform.GetComponent<Player>().TakeDamage(1000000000);
+        }
     }
 }
