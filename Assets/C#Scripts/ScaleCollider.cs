@@ -6,8 +6,6 @@ public class ScaleCollider : MonoBehaviour
 {
     public Camera cam;
     public BoxCollider2D box;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +17,4 @@ public class ScaleCollider : MonoBehaviour
  
         box.size = new Vector2(width, height);     
     }
-
 }
