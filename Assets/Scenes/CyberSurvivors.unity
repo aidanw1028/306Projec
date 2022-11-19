@@ -448,6 +448,7 @@ MonoBehaviour:
   projectile: {fileID: -9196564558138045464, guid: f8e92382fae0a934ea1f1288aa13050a, type: 3}
   fireRate: 1
   fireTime: 0
+  shield: {fileID: 8701632389835668720, guid: d08fe3c0b6f628a40b23198e549fb370, type: 3}
   mainCam: {fileID: 0}
 --- !u!4 &657645400
 Transform:
