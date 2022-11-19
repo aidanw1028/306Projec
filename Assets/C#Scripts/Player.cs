@@ -68,4 +68,11 @@ public class Player : MonoBehaviour
             fireTime = Time.time + fireRate;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.transform.tag == "Enemy"){
+            Debug.Log("SWING!");
+        }
+
+    }
 }

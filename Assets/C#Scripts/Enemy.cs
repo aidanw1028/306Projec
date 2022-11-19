@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
     }
     void OnTriggerStay2D(Collider2D other){
-        if (other.transform.tag == "Player" && Time.time > damageTime){
+        if (other.transform.tag == "Player" && Time.time > damageTime && other is BoxCollider2D){
             other.transform.GetComponent<Player>().TakeDamage(damage);
             damageTime = Time.time + damageRate;
         }

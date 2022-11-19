@@ -23,7 +23,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && other is BoxCollider2D)
         {
             other.transform.GetComponent<Player>().TakeDamage(dmg);
             Destroy(this.gameObject);
