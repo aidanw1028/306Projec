@@ -12,6 +12,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Projectile projectile;
     [SerializeField] private float fireRate = 5.0f;
     [SerializeField] private float fireTime;
+
+    // Shield vars
+    [SerializeField] private Shield shield;
+    private bool hasShield = true;
+    private float rechargeTime = 5.0f;
+    private float shieldTime;
+
     Vector2 playerPos;
 
     Vector2 TruePlayerPos;
@@ -29,6 +36,7 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         Shoot();
+        UseShield();
 
     }
 
@@ -45,6 +53,14 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.D)) {
             transform.position += Vector3.right * moveSpeed*Time.deltaTime;
             }
+    }
+
+    void UseShield(){
+        if(Input.GetKey(KeyCode.Space) && hasShield is true && Time.time >= shieldTime){
+            Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
+
+            shieldTime = Time.time + rechargeTime;
+        }
     }
 
 

@@ -28,6 +28,10 @@ public class EnemyProjectile : MonoBehaviour
             other.transform.GetComponent<Player>().TakeDamage(dmg);
             Destroy(this.gameObject);
         }
+
+        if (other.transform.tag == "Shield" && other is BoxCollider2D){
+            Destroy(this.gameObject);
+        }
     }
 }
 
