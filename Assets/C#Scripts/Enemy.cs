@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     * Takes damage when getting shot
     */
     public void TakeDamage(float damage){
+        Debug.Log(damage);
         health -= damage;
         if(health <= 0){
             Destroy(this.gameObject);
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void PlayFeedback(Projectile sender, float knockBackstrength)
+    public void PlayFeedback(GameObject sender, float knockBackstrength)
     {
         StopAllCoroutines();
         OnBegin?.Invoke();

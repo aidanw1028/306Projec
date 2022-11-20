@@ -21,6 +21,7 @@ public class BasicGun : MonoBehaviour
         if (Time.time >= fireTime)
         {
             Projectile a = Instantiate(projectile, transform.position, transform.rotation);
+            a.IncreaseDamage(20);
 
             // Sets the firedelay for player
             fireTime = Time.time + fireRate;

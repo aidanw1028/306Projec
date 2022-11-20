@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
+    private Rigidbody2D rb;
     [SerializeField] private float lifeTime = 2.5f;
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float dmg = 25.0f;
     [SerializeField] private float knockBackstrength = 8;
 
     void Start() {
-    	Destroy(this.gameObject, lifeTime);
-    }
-
-    void Update() {
-    	MoveProjectile();
-    }
-
-    private void MoveProjectile() {
-    	transform.position += transform.right * moveSpeed * Time.deltaTime;
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(1, 0).normalized * moveSpeed;
+        Destroy(this.gameObject, lifeTime);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
     	if (other.transform.tag == "Enemy") {
-    		other.transform.GetComponent<Enemy>().TakeDamage(dmg);
-            other.transform.GetComponent<Enemy>().PlayFeedback(this, knockBackstrength);
+
+            float variation = Random.Range(-5.0f, 5.0f);
+    		other.transform.GetComponent<Enemy>().TakeDamage(dmg+variation);
+            other.transform.GetComponent<Enemy>().PlayFeedback(this.gameObject, knockBackstrength);
             Destroy(this.gameObject);
     	}
+    }
+
+    public void IncreaseDamage(float d)
+    {
+        dmg += d;
     }
 }
