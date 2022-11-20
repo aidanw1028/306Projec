@@ -127,6 +127,14 @@ MonoBehaviour:
   projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a, type: 3}
   fireRate: 3
   fireTime: 0
+  rb2d: {fileID: 1837425076092260288}
+  KnockbackDelay: 0.15
+  OnBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &8564750622950891031
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,11 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float damage = 50.0f;
 
-    // projectile vars
-    [SerializeField] private Projectile projectile;
-    [SerializeField] private float fireRate = 5.0f;
-    [SerializeField] private float fireTime;
-
     // Shield vars
     [SerializeField] private Shield shield;
     private bool hasShield = true;
@@ -35,7 +30,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        Shoot();
         UseShield();
 
     }
@@ -75,15 +69,6 @@ public class Player : MonoBehaviour
 
     }
 
-
-    private void Shoot() {
-        if (Time.time >= fireTime) {
-            Projectile a = Instantiate(projectile, transform.position, transform.rotation);
-
-            // Sets the firedelay for player
-            fireTime = Time.time + fireRate;
-        }
-    }
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.transform.tag == "Enemy"){

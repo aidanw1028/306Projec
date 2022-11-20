@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyProjectile projectile;
     [SerializeField] private float fireRate = 3.0f;
     [SerializeField] private float fireTime;
+    [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private float KnockbackDelay = 0.15f;
+    public UnityEvent OnBegin, OnDone;
     // Start is called before the first frame update
-  
+
     void Update() {
         Shoot();
         Move();
@@ -56,5 +60,21 @@ public class Enemy : MonoBehaviour
             other.transform.GetComponent<Player>().TakeDamage(damage);
             damageTime = Time.time + damageRate;
         }
+    }
+
+    public void PlayFeedback(Projectile sender, float knockBackstrength)
+    {
+        StopAllCoroutines();
+        OnBegin?.Invoke();
+        Vector2 direction = (transform.position - sender.transform.position).normalized;
+        rb2d.AddForce(direction * knockBackstrength, ForceMode2D.Impulse);
+        StartCoroutine(Reset());
+    }
+
+    private IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(KnockbackDelay);
+        rb2d.velocity = Vector3.zero;
+        OnDone?.Invoke();
     }
 }
