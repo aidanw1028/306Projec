@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1bfc921cfa8edcb45a7a78959ffd1d13
+  - enabled: 1
     path: Assets/Scenes/CyberSurvivors.unity
     guid: 9792537f9b0e13b469dd5a2354db7637
   m_configObjects: {}
