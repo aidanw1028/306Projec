@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float health = 500.0f;
     [SerializeField] private float moveSpeed = 10.0f;
-    [SerializeField] private float damage = 50.0f;
 
     // Shield vars
     [SerializeField] private Shield shield;

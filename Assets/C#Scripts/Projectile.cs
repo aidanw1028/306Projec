@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
+    public Transform damagePopup;
     private Rigidbody2D rb;
     [SerializeField] private float lifeTime = 2.5f;
-    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private float moveSpeed = 8.0f;
     [SerializeField] private float dmg = 25.0f;
     [SerializeField] private float knockBackstrength = 8;
+    private int critChance = 4;
+    private float critMultiplier = 1.75f;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -20,15 +22,24 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
     	if (other.transform.tag == "Enemy") {
 
-            float variation = Random.Range(-5.0f, 5.0f);
-    		other.transform.GetComponent<Enemy>().TakeDamage(dmg+variation);
+            int variation = Random.Range(-5, 5);
+            bool isCrit = Random.Range(0, 100) < critChance;
+            if (isCrit)
+            {
+                dmg *= critMultiplier;
+            }
+
+            other.transform.GetComponent<Enemy>().TakeDamage(dmg+variation);
             other.transform.GetComponent<Enemy>().PlayFeedback(this.gameObject, knockBackstrength);
+            DamagePopup.Create(other.transform.GetComponent<Enemy>().transform.position, (int)dmg+variation, damagePopup, isCrit);
             Destroy(this.gameObject);
     	}
     }
 
-    public void IncreaseDamage(float d)
+    public void ApplyMultipliers(float damage, float knockback, float speed)
     {
-        dmg += d;
+        dmg = dmg * damage;
+        knockBackstrength = knockBackstrength * knockback;
+        moveSpeed = moveSpeed * speed;
     }
 }

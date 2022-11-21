@@ -38,12 +38,10 @@ public class Enemy : MonoBehaviour
     private void Shoot() {
     //     // translated 3d instantiating to 2d, I hope you guys don't look too much into how this works
          if (GameManager.instance.player && Time.time > fireTime) {
-            //         Debug.Log("stuff");
-            //         transform.right = GameManager.instance.player.transform.position - transform.position;
             EnemyProjectile p = Instantiate(projectile, transform.position, Quaternion.identity);
-    //         a.transform.position = transform.position;
 
-             fireTime = Time.time + fireRate;
+            float fireRateVariation = Random.Range(-0.5f, 0.5f);
+            fireTime = Time.time + fireRate+fireRateVariation;
          }
      }
 

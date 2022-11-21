@@ -146,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d42f4c462ebc2439bf0bb85847e74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePopup: {fileID: 8369771934319550274, guid: ae41d810ff7f0c749ba63cc2af21333c, type: 3}

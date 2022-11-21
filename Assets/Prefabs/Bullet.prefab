@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e20c37076604e743912f7294474a1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePopup: {fileID: 8369771934319550274, guid: ae41d810ff7f0c749ba63cc2af21333c, type: 3}
   lifeTime: 2.5
-  moveSpeed: 5
+  moveSpeed: 6
   dmg: 25
+  knockBackstrength: 8
