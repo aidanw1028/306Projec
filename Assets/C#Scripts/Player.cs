@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float health = 500.0f;
+    // hp vars
+    [SerializeField] public float health = 500.0f;
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float damage = 50.0f;
+    [SerializeField] public HealthBar healthbar;
 
     // projectile vars
     [SerializeField] private Projectile projectile;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthbar.SetMaxHP(health);
         playerPos = gameObject.transform.position;
 
     }
@@ -69,6 +72,7 @@ public class Player : MonoBehaviour
     */
     public void TakeDamage(float damage) {
         health -=damage;
+        healthbar.SetHealth(damage);
         if(health<=0) {
             Destroy(this.gameObject);
         }

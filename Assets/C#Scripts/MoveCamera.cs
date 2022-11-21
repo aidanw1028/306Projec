@@ -7,19 +7,21 @@ public class MoveCamera : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject refObj;
-    void Start()
-    {
-        
-    }
-
+    private float delay = 2f;
     // Update is called once per frame
     void Update()
     {
     	if (refObj != null) {
 			transform.position += Vector3.right * Time.deltaTime * 0.50f;    	}
     	else {
-    		SceneManager.LoadScene("MainMenu");
+    		// Invoke takes 2 args, function name and the amount of delay till scene reloads
+    		Debug.Log("Game Over");
+    		Invoke("Restart", delay);
     	}
+    }
+
+    void Restart() {
+    	SceneManager.LoadScene("MainMenu");
     }
     
 
