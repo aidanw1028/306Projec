@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     // Shield vars
     [SerializeField] private Shield shield;
     private bool hasShield = true;
-    private float rechargeTime = 5.0f;
-    private float shieldTime;
+    private float rechargeTime = 5.0f; // The Recharge time of the shield
+    private float shieldTime; // Time since shield was last used
 
     Vector2 playerPos;
 
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.transform.tag == "Enemy"){
-            Debug.Log("SWING!");
+            //Debug.Log("SWING!");
         }
 
     }
