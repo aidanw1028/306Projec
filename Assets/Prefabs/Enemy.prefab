@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 689612868429203448}
   - component: {fileID: 1367393330756680876}
-  - component: {fileID: 1837425076092260288}
   - component: {fileID: 8326814953994658783}
+  - component: {fileID: 1837425076092260288}
   - component: {fileID: 8564750622950891031}
   m_Layer: 0
   m_Name: Enemy
@@ -115,8 +115,7 @@ Transform:
   m_LocalPosition: {x: -0.005653746, y: 0.0042685075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8217225291140121448}
+  m_Children: [{fileID: 8217225291140121448}]
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.0754717, g: 0.050907798, b: 0.050907798, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -209,7 +208,8 @@ MonoBehaviour:
   moveSpeed: 1
   damage: 25
   damageRate: 1
-  projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a, type: 3}
+  projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a,
+    type: 3}
   fireRate: 3
   fireTime: 0
   rb2d: {fileID: 1837425076092260288}
@@ -220,6 +220,7 @@ MonoBehaviour:
   OnDone:
     m_PersistentCalls:
       m_Calls: []
+  objRend: {fileID: 1367393330756680876}
 --- !u!61 &8564750622950891031
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float health = 100000.0f;
-    [SerializeField] private float moveSpeed = 10.0f;
+
+
+    // hp vars
+    [SerializeField] public float health = 500.0f;
+    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float damage = 50.0f;
+    [SerializeField] public HealthBar healthbar;
 
     // Shield vars
     [SerializeField] private Shield shield;
     private bool hasShield = true;
     private float rechargeTime = 5.0f; // The Recharge time of the shield
     private float shieldTime; // Time since shield was last used
+
+    public Rigidbody2D rb;  
+    public Vector3 movement;
 
     Vector2 playerPos;
 
@@ -21,6 +29,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthbar.SetMaxHP(health);
         playerPos = gameObject.transform.position;
 
     }
@@ -44,18 +53,26 @@ public class Player : MonoBehaviour
     }
 
     void MovePlayer() {
-        if(Input.GetKey(KeyCode.W)) {
-            transform.position += Vector3.up *moveSpeed*Time.deltaTime;
-            }
-        if(Input.GetKey(KeyCode.S)) {
-            transform.position += Vector3.down * moveSpeed*Time.deltaTime;
-            }
-        if(Input.GetKey(KeyCode.A)) {
-            transform.position += Vector3.left * moveSpeed*Time.deltaTime;
-            }
-        if(Input.GetKey(KeyCode.D)) {
-            transform.position += Vector3.right * moveSpeed*Time.deltaTime;
-            }
+        //rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed*Time.deltaTime;
+        movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        rb.velocity = movement * moveSpeed;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        }
     }
 
     void UseShield(){
@@ -72,6 +89,7 @@ public class Player : MonoBehaviour
     */
     public void TakeDamage(float damage) {
         health -=damage;
+        healthbar.SetHealth(damage);
         if(health<=0) {
             Destroy(this.gameObject);
         }

@@ -15,6 +15,7 @@ public class MoveCamera : MonoBehaviour
         
     }
 
+    private float delay = 2f;
     // Update is called once per frame
     void Update()
     {
@@ -22,10 +23,16 @@ public class MoveCamera : MonoBehaviour
 			transform.position += Vector3.right * Time.deltaTime *  camSpeed;    	
             }
     	else {
-    		SceneManager.LoadScene("MainMenu");
+    		// Invoke takes 2 args, function name and the amount of delay till scene reloads
+    		Debug.Log("Game Over");
+    		Invoke("Restart", delay);
     	}
 
         scaleSpeed();
+    }
+
+    void Restart() {
+    	SceneManager.LoadScene("MainMenu");
     }
     
     private void scaleSpeed(){
