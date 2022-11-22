@@ -22,9 +22,6 @@ public class Enemy : MonoBehaviour
     void Update() {
         Shoot();
         Move();
-        // if (health<=100.0f) {
-        //     StartCoroutine(Fade());
-        // }
     }
 
     /**
@@ -72,9 +69,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    /**
-    * If the player collides with the enemy, do damage to player for however long the player is withing the enemy
-    */
+    
     private void Move() {
         float step = moveSpeed * Time.deltaTime;
 
@@ -83,6 +78,9 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
         }
     }
+    /**
+    * If the player collides with the enemy, do damage to player for however long the player is withing the enemy
+    */
     void OnTriggerStay2D(Collider2D other){
         if (other.transform.tag == "Player" && Time.time > damageTime && other is BoxCollider2D){
             other.transform.GetComponent<Player>().TakeDamage(damage);
