@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float moveSpeed = 1.0f;
-    [SerializeField] private float damage = 25.0f;
+    [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
     private float damageTime;
 

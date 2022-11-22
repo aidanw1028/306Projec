@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float health = 500.0f;
+    [SerializeField] private float health = 100000.0f;
     [SerializeField] private float moveSpeed = 10.0f;
 
     // Shield vars
@@ -30,6 +30,16 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         UseShield();
+
+        //set bounds for the player between the edges of the road
+        if (transform.position.y >= -1)
+        {
+            transform.position = new Vector3(transform.position.x, -1, 0);
+        }
+        else if (transform.position.y <= -4.5)
+        {
+            transform.position = new Vector3(transform.position.x, (float)-4.5, 0);
+        }
 
     }
 
@@ -65,7 +75,7 @@ public class Player : MonoBehaviour
         if(health<=0) {
             Destroy(this.gameObject);
         }
-
+        Debug.Log(health);
     }
 
 
