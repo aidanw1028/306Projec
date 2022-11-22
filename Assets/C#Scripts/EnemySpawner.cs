@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy() {
         if(Time.time > spawnTimer) {
             Vector3 spawn = transform.position;
-            int y = Random.Range(-3,3);
+            int y = Random.Range(-1,-4);
             spawn.z = 0;
             spawn.x+=5;
             spawn.y = y;
