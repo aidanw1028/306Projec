@@ -58,9 +58,9 @@ public class Enemy : MonoBehaviour
     IEnumerator Flicker() {
         Color originalColor = objRend.color; //get current color
         float flashingFor = 0; 
-        float flashSpeed = 0.5f; 
+        float flashSpeed = 0.125f; 
         Color flashColor = Color.white;
-        float flashTime = 0.75f; // flash for this much time
+        float flashTime = 0.255f; // flash for this much time
         var newColor = flashColor;
         while(flashingFor<flashTime) {
             objRend.color = newColor;
@@ -99,7 +99,8 @@ public class Enemy : MonoBehaviour
 
     public void PlayFeedback(GameObject sender, float knockBackstrength)
     {
-        StopAllCoroutines();
+        // commenting this makes flicker work
+        //StopAllCoroutines();
         OnBegin?.Invoke();
         Vector2 direction = (transform.position - sender.transform.position).normalized;
         rb2d.AddForce(direction * knockBackstrength, ForceMode2D.Impulse);
