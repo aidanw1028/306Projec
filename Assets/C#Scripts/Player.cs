@@ -57,25 +57,31 @@ public class Player : MonoBehaviour
         //rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed*Time.deltaTime;
         movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         rb.velocity = movement * moveSpeed;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
+        if (Input.GetKey(KeyCode.A)) {
             transform.eulerAngles = new Vector3(0, 180, 0);
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.D)) {
+            transform.eulerAngles = new Vector3(0,0,0);
         }
+
+        // if (Input.GetKey(KeyCode.W))
+        // {
+        //     transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+        // }
+        // if (Input.GetKey(KeyCode.S))
+        // {
+        //     transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        // }
+        // if (Input.GetKey(KeyCode.A))
+        // {
+        //     transform.eulerAngles = new Vector3(0, 180, 0);
+        //     transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        // }
+        // if (Input.GetKey(KeyCode.D))
+        // {
+        //     transform.eulerAngles = new Vector3(0, 0, 0);
+        //     transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        // }
     }
 
     void UseShield(){

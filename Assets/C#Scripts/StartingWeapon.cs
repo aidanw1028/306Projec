@@ -6,13 +6,30 @@ public class StartingWeapon : MonoBehaviour
 {
 
 	public GameObject panel;
+	public GameObject player;
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (panel != null) {
-        	Time.timeScale = 0;
-        }
+    void Start() {
+    	// if basic gun or shotgun start out as active, disable them
+    	Time.timeScale = 0f;
+    	if (player.transform.GetChild(3).gameObject.activeInHierarchy) {
+    		player.transform.GetChild(3).gameObject.SetActive(false);
+    	}
+    	if (player.transform.GetChild(4).gameObject.activeInHierarchy) {
+    		player.transform.GetChild(4).gameObject.SetActive(false);
+    	}
+    }
+
+    	//Basic gun is set active, game starts
+    public void ChooseBasicGun() {
+    	player.transform.GetChild(3).gameObject.SetActive(true);
+    	panel.SetActive(false);
+    	Time.timeScale = 1f;
+    }
+    	//shotgun is set active
+    public void ChooseShotgun() {
+    	player.transform.GetChild(4).gameObject.SetActive(true);
+    	panel.SetActive(false);
+    	Time.timeScale = 1f;
     }
 }
