@@ -12,14 +12,28 @@ public class UpgradeManager : MonoBehaviour
     //Basic upgrade values
     private float damageBonus = 0.5f;
     private float knockbackBonus = 2.0f;
-    void Start()
-    {
-        
-    }
+    private int criticalChanceBonus = 5;
+    private float criticalMultiplierBonus = 0.25f;
+    private float bulletSpeedBonus = 1.0f;
+
+    private float upgradeRate = 30.0f;
+    private float upgradeTime;
 
     // Update is called once per frame
     void Update()
     {
-        
+        upgradeDelay();   
     }
+
+
+    void upgradeDelay()
+    {
+        if (Time.time > upgradeTime)
+        {
+            Debug.Log("Upgrade");
+            upgradeTime = Time.time + upgradeRate;
+        }
+    }
+
+
 }

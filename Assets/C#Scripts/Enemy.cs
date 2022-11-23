@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     //projectile vars
     [SerializeField] private EnemyProjectile projectile;
     [SerializeField] private float fireRate = 3.0f;
-    [SerializeField] private float fireTime;
+    [SerializeField] private float fireTime = 5;
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private float KnockbackDelay = 0.15f;
     public UnityEvent OnBegin, OnDone;
