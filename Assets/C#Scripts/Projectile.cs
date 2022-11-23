@@ -15,7 +15,8 @@ public class Projectile : MonoBehaviour
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(1, 0).normalized * moveSpeed;
+        float direction = GameManager.instance.player.transform.forward.z;
+        rb.velocity = new Vector2(direction, 0).normalized * moveSpeed;
         Destroy(this.gameObject, lifeTime);
     }
 

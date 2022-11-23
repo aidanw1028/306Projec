@@ -7,7 +7,12 @@ public class HealthBar : MonoBehaviour
 {
    public Slider slider;
 
-   	public void SetMaxHP(float hp) {
+    private void Update()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    public void SetMaxHP(float hp) {
    		slider.maxValue = hp;
    		slider.value = hp;
    	}

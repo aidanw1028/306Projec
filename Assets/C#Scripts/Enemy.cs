@@ -91,6 +91,13 @@ public class Enemy : MonoBehaviour
         // move sprite towards the target location
         if (GameManager.instance.player != null) {
             transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
+            if (transform.position.x < GameManager.instance.player.transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            } else
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
     }
     /**

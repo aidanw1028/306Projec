@@ -63,4 +63,6 @@ public class BasicGun : MonoBehaviour
     {
         dupeShot = !dupeShot;
     }
+
+
 }

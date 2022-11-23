@@ -68,10 +68,12 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
+            transform.eulerAngles = new Vector3(0, 180, 0);
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            transform.eulerAngles = new Vector3(0, 0, 0);
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
     }

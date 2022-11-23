@@ -21,7 +21,8 @@ public class ShotgunBullet : MonoBehaviour
     public void SetDirection(float direction)
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(1, direction).normalized * moveSpeed;
+        float playerDirection = GameManager.instance.player.transform.forward.z;
+        rb.velocity = new Vector2(playerDirection, direction).normalized * moveSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D other)

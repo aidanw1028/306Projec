@@ -8,6 +8,10 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private GameObject basicGun;
     [SerializeField] private GameObject shotgun;
     [SerializeField] private GameObject player;
+
+    //Basic upgrade values
+    private float damageBonus = 0.5f;
+    private float knockbackBonus = 2.0f;
     void Start()
     {
         
