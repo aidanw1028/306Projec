@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - BasicGun
   - Shotgun
+  - Health
   layers:
   - Default
   - TransparentFX

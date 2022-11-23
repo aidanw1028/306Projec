@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     // Core vars
-    [SerializeField] private float health = 100.0f;
+    [SerializeField] private float health = 50.0f;
     [SerializeField] private float moveSpeed = 1.0f;
     [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float KnockbackDelay = 0.15f;
     public UnityEvent OnBegin, OnDone;
 
+    public Healthpack healthPack;
+    private float healthProb = 9;
+
 
     [SerializeField] private SpriteRenderer objRend;  
   
@@ -33,10 +36,14 @@ public class Enemy : MonoBehaviour
     * Takes damage when getting shot
     */
     public void TakeDamage(float damage){
-        Debug.Log(damage);
+        //Debug.Log(damage);
         health -= damage;
         StartCoroutine(Flicker());
         if(health <= 0){
+            bool willDrop = Random.Range(0, 100) < healthProb;
+            if (willDrop){
+                Healthpack h = Instantiate(healthPack, transform.position, Quaternion.identity);
+            }
             Destroy(this.gameObject);
         }
     }
@@ -46,7 +53,6 @@ public class Enemy : MonoBehaviour
 
             float fireRateVariation = Random.Range(-0.5f, 0.5f);
             fireTime = Time.time + fireRate+fireRateVariation;
-            fireTime = Time.time + fireRate;
          }
      }
 
@@ -85,6 +91,13 @@ public class Enemy : MonoBehaviour
         // move sprite towards the target location
         if (GameManager.instance.player != null) {
             transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
+            if (transform.position.x < GameManager.instance.player.transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            } else
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
     }
     /**

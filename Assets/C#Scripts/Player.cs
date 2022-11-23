@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float damage = 50.0f;
     [SerializeField] public HealthBar healthbar;
+    private float maxHealth = 500.0f;
 
     // Shield vars
     [SerializeField] private Shield shield;
@@ -67,17 +68,20 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
+            transform.eulerAngles = new Vector3(0, 180, 0);
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            transform.eulerAngles = new Vector3(0, 0, 0);
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
     }
 
     void UseShield(){
         if(Input.GetKey(KeyCode.Space) && hasShield is true && Time.time >= shieldTime){
-            Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
+            // Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
+            Shield s = Instantiate(shield, transform.position, transform.rotation);
 
             shieldTime = Time.time + rechargeTime;
         }
@@ -93,7 +97,18 @@ public class Player : MonoBehaviour
         if(health<=0) {
             Destroy(this.gameObject);
         }
-        Debug.Log(health);
+        //Debug.Log(health);
+    }
+
+    public void HealPlayer(float heal){
+        if(health + heal < maxHealth){
+            health += heal;
+            healthbar.addHealth(heal);
+        }
+        else{
+            health = maxHealth;
+            healthbar.SetMaxHP(health);
+        }
     }
 
 
