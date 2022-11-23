@@ -58,4 +58,9 @@ public class BasicGun : MonoBehaviour
     {
         speedMultiplier += increase;
     }
+
+    public void SetMultishot()
+    {
+        dupeShot = !dupeShot;
+    }
 }

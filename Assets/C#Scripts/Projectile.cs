@@ -42,4 +42,17 @@ public class Projectile : MonoBehaviour
         knockBackstrength = knockBackstrength * knockback;
         moveSpeed = moveSpeed * speed;
     }
+
+    public void IncreaseCritChance(int increase)
+    {
+        if (critChance <= 100)
+        {
+            critChance += increase;
+        }
+    }
+
+    public void IncreaseCritMultiplier(float increase)
+    {
+        critMultiplier += increase;
+    }
 }

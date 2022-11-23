@@ -10,6 +10,7 @@ public class Shotgun : MonoBehaviour
     private float damageMultiplier = 1.0f;
     private float knockbackMultiplier = 1.0f;
     private float speedMultiplier = 1.0f;
+    private bool upgraded = false;
 
     // Update is called once per frame
     void Update()
@@ -21,9 +22,6 @@ public class Shotgun : MonoBehaviour
     {
         if (Time.time >= fireTime)
         {
-            ShotgunBullet a = Instantiate(projectile, transform.position, transform.rotation);
-            a.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
-            a.SetDirection(0.4f);
 
             ShotgunBullet b = Instantiate(projectile, transform.position, transform.rotation);
             b.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
@@ -37,9 +35,16 @@ public class Shotgun : MonoBehaviour
             d.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
             d.SetDirection(-0.2f);
 
-            ShotgunBullet e = Instantiate(projectile, transform.position, transform.rotation);
-            e.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
-            e.SetDirection(-0.4f);
+            if (upgraded)
+            {
+                ShotgunBullet a = Instantiate(projectile, transform.position, transform.rotation);
+                a.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+                a.SetDirection(0.4f);
+
+                ShotgunBullet e = Instantiate(projectile, transform.position, transform.rotation);
+                e.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+                e.SetDirection(-0.4f);
+            }
 
             // Sets the firedelay for player
             fireTime = Time.time + fireRate;

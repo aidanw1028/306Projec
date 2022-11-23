@@ -8,7 +8,7 @@ public class ShotgunBullet : MonoBehaviour
     private Rigidbody2D rb;
     private float lifeTime = 0.6f;
     private float moveSpeed = 7.0f;
-    private float dmg = 20.0f;
+    private float dmg = 25.0f;
     private float knockBackstrength = 6;
     private int critChance = 5;
     private float critMultiplier = 1.75f;
@@ -48,5 +48,18 @@ public class ShotgunBullet : MonoBehaviour
         dmg = dmg * damage;
         knockBackstrength = knockBackstrength * knockback;
         moveSpeed = moveSpeed * speed;
+    }
+
+    public void IncreaseCritChance(int increase)
+    {
+        if (critChance <= 100)
+        {
+            critChance += increase;
+        }
+    }
+
+    public void IncreaseCritMultiplier(float increase)
+    {
+        critMultiplier += increase;
     }
 }
