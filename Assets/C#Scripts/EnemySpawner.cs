@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public Camera mainCam;
     private float spawnTimer;
     private float spawnRate = 3.0f;
+    private float spawnIncreaseTime = 30.0f;
+    private float increaseTimer = 30;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +30,16 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawn = transform.position;
             int y = Random.Range(-1,-4);
             spawn.z = 0;
-            spawn.x+=5;
+            spawn.x+=10;
             spawn.y = y;
             Instantiate(prefabEnemy, spawn,transform.rotation);
             spawnTimer = Time.time + spawnRate;
+        }
+        if (Time.time > increaseTimer)
+        {
+            Debug.Log("Lower enemy spawn rate");
+            spawnRate -= 0.20f;
+            increaseTimer = Time.time + spawnIncreaseTime;
         }
     }
 }

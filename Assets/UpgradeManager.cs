@@ -15,9 +15,11 @@ public class UpgradeManager : MonoBehaviour
     private int criticalChanceBonus = 5;
     private float criticalMultiplierBonus = 0.25f;
     private float bulletSpeedBonus = 1.0f;
+    private float healthBonus = 100;
+    private float fireRateReduction = -0.25f;
 
     private float upgradeRate = 30.0f;
-    private float upgradeTime;
+    private float upgradeTime = 30;
 
     // Update is called once per frame
     void Update()
