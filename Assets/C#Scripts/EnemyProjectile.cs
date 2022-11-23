@@ -32,7 +32,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (other.transform.tag == "Shield" && other is BoxCollider2D){
+        if (other.transform.tag == "Shield"){
             Destroy(this.gameObject);
         }
     }

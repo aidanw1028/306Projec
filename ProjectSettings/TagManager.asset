@@ -10,6 +10,7 @@ TagManager:
   - BasicGun
   - Shotgun
   - Health
+  - MeleeRange
   layers:
   - Default
   - TransparentFX
