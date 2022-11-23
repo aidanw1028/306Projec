@@ -115,7 +115,8 @@ Transform:
   m_LocalPosition: {x: -0.005653746, y: 0.0042685075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 8217225291140121448}]
+  m_Children:
+  - {fileID: 8217225291140121448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,6 +172,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8326814953994658783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414967379255871425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3ce92bc3b958c41952eebf62049c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  moveSpeed: 1
+  damage: 25
+  damageRate: 1
+  projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a, type: 3}
+  fireRate: 3
+  fireTime: 0
+  rb2d: {fileID: 1837425076092260288}
+  KnockbackDelay: 0.15
+  OnBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
+  healthPack: {fileID: 5155801914004362766, guid: 682a31a310340a747966788f79a7f0c2, type: 3}
+  objRend: {fileID: 1367393330756680876}
 --- !u!50 &1837425076092260288
 Rigidbody2D:
   serializedVersion: 4
@@ -192,35 +222,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8326814953994658783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414967379255871425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc3ce92bc3b958c41952eebf62049c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  moveSpeed: 1
-  damage: 25
-  damageRate: 1
-  projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a,
-    type: 3}
-  fireRate: 3
-  fireTime: 0
-  rb2d: {fileID: 1837425076092260288}
-  KnockbackDelay: 0.15
-  OnBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDone:
-    m_PersistentCalls:
-      m_Calls: []
-  objRend: {fileID: 1367393330756680876}
 --- !u!61 &8564750622950891031
 BoxCollider2D:
   m_ObjectHideFlags: 0

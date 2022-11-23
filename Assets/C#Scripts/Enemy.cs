@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float KnockbackDelay = 0.15f;
     public UnityEvent OnBegin, OnDone;
 
+    public Healthpack healthPack;
+    private float healthProb = 9;
+
 
     [SerializeField] private SpriteRenderer objRend;  
   
@@ -33,10 +36,14 @@ public class Enemy : MonoBehaviour
     * Takes damage when getting shot
     */
     public void TakeDamage(float damage){
-        Debug.Log(damage);
+        //Debug.Log(damage);
         health -= damage;
         StartCoroutine(Flicker());
         if(health <= 0){
+            bool willDrop = Random.Range(0, 100) < healthProb;
+            if (willDrop){
+                Healthpack h = Instantiate(healthPack, transform.position, Quaternion.identity);
+            }
             Destroy(this.gameObject);
         }
     }
