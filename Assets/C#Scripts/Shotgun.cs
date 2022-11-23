@@ -70,4 +70,9 @@ public class Shotgun : MonoBehaviour
     {
         speedMultiplier += increase;
     }
+
+    public void SetUpgrade()
+    {
+        upgraded = !upgraded;
+    }
 }

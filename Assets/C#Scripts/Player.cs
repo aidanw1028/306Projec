@@ -80,7 +80,8 @@ public class Player : MonoBehaviour
 
     void UseShield(){
         if(Input.GetKey(KeyCode.Space) && hasShield is true && Time.time >= shieldTime){
-            Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
+            // Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
+            Shield s = Instantiate(shield, transform.position, transform.rotation);
 
             shieldTime = Time.time + rechargeTime;
         }
