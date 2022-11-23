@@ -23,6 +23,6 @@ public class Shield : MonoBehaviour
 
         // move shield towards the target location
         // transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position + (transform.right), step);
-       transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position, step);
+       transform.position = GameManager.instance.player.transform.position;
     }
 }
