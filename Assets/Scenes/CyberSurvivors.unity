@@ -2351,8 +2351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c78a582fff80c4da2b665d38052d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slashEffect: {fileID: 0}
   damagePopup: {fileID: 8369771934319550274, guid: ae41d810ff7f0c749ba63cc2af21333c, type: 3}
+  attackEffect: {fileID: 2979296055048463134, guid: 0fdcd97ae647814408099be9dbd3618d, type: 3}
 --- !u!1 &1433830945
 GameObject:
   m_ObjectHideFlags: 0

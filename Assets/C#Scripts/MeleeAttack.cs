@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-    public GameObject slashEffect;
     private float rechargeTime = 10.0f; // The Recharge time of the shield
     private float slashTime; // Time since slash was last used
 
@@ -14,6 +13,8 @@ public class MeleeAttack : MonoBehaviour
     private float knockBackstrength = 6;
     private float critChance = 10;
     private float critMultiplier = 1.50f;
+
+    public GameObject attackEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,8 @@ public class MeleeAttack : MonoBehaviour
                 dmg *= critMultiplier;
             }
 
+            GameObject effect = Instantiate(attackEffect, transform.position + (transform.right), transform.rotation);
+            Destroy(effect, 0.1f);
             other.transform.GetComponent<Enemy>().TakeDamage(dmg+variation);
             other.transform.GetComponent<Enemy>().PlayFeedback(this.gameObject, knockBackstrength);
             DamagePopup.Create(other.transform.GetComponent<Enemy>().transform.position, (int)dmg + variation, damagePopup, isCrit);
