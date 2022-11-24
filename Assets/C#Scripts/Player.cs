@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
 
     // hp vars
-    [SerializeField] public float health = 500.0f;
+    public float health = 500.00f;
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float damage = 50.0f;
     [SerializeField] public HealthBar healthbar;

@@ -17,7 +17,8 @@ public class procedural_generation : MonoBehaviour
     void Spawn()
     {
         //spawn enemies randomly
-        float X = Random.Range((int)(transform.position.x)+20, 40);
+        Debug.Log(transform.position.x);
+        float X = Random.Range((int)(transform.position.x)+10, (transform.position.x) + 30);
         float Y = Random.Range(minY, maxY);
 
         Instantiate(Obstacle, new Vector3(X, Y, 0), transform.rotation);

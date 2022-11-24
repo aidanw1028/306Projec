@@ -107,6 +107,7 @@ public class Enemy : MonoBehaviour
         if (other.transform.tag == "Player" && Time.time > damageTime && other is BoxCollider2D){
             other.transform.GetComponent<Player>().TakeDamage(damage);
             damageTime = Time.time + damageRate;
+            Debug.Log("Enemy Hit");
         }
     }
 
