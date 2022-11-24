@@ -44,23 +44,14 @@ public class ShotgunBullet : MonoBehaviour
         }
     }
 
-    public void ApplyMultipliers(float damage, float knockback, float speed)
+    public void ApplyMultipliers(float damage, float knockback, float speed, int chance, float multiplier)
     {
         dmg = dmg * damage;
         knockBackstrength = knockBackstrength * knockback;
         moveSpeed = moveSpeed * speed;
+        critChance = chance;
+        critMultiplier = multiplier;
     }
 
-    public void IncreaseCritChance(int increase)
-    {
-        if (critChance <= 100)
-        {
-            critChance += increase;
-        }
-    }
 
-    public void IncreaseCritMultiplier(float increase)
-    {
-        critMultiplier += increase;
-    }
 }

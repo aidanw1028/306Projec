@@ -124,4 +124,10 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void IncreaseHealth(float increase)
+    {
+        maxHealth += increase;
+        healthbar.SetMaxHP(maxHealth);
+    }
 }

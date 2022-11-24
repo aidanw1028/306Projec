@@ -10,6 +10,8 @@ public class Shotgun : MonoBehaviour
     private float damageMultiplier = 1.0f;
     private float knockbackMultiplier = 1.0f;
     private float speedMultiplier = 1.0f;
+    private int critChance = 5;
+    private float critMultiplier = 1.75f;
     private bool upgraded = false;
 
     // Update is called once per frame
@@ -24,25 +26,25 @@ public class Shotgun : MonoBehaviour
         {
 
             ShotgunBullet b = Instantiate(projectile, transform.position, transform.rotation);
-            b.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+            b.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
             b.SetDirection(0.2f);
 
             ShotgunBullet c = Instantiate(projectile, transform.position, transform.rotation);
-            c.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+            c.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
             c.SetDirection(0.0f);
 
             ShotgunBullet d = Instantiate(projectile, transform.position, transform.rotation);
-            d.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+            d.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
             d.SetDirection(-0.2f);
 
             if (upgraded)
             {
                 ShotgunBullet a = Instantiate(projectile, transform.position, transform.rotation);
-                a.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+                a.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
                 a.SetDirection(0.4f);
 
                 ShotgunBullet e = Instantiate(projectile, transform.position, transform.rotation);
-                e.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier);
+                e.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
                 e.SetDirection(-0.4f);
             }
 
@@ -51,7 +53,7 @@ public class Shotgun : MonoBehaviour
         }
     }
 
-    private void IncreaseFireRate(float t)
+    public void IncreaseFireRate(float t)
     {
         fireRate += t;
     }
@@ -74,5 +76,18 @@ public class Shotgun : MonoBehaviour
     public void SetUpgrade()
     {
         upgraded = !upgraded;
+    }
+
+    public void IncreaseCritChance(int increase)
+    {
+        if (critChance <= 100)
+        {
+            critChance += increase;
+        }
+    }
+
+    public void IncreaseCritMultiplier(float increase)
+    {
+        critMultiplier += increase;
     }
 }

@@ -11,6 +11,14 @@ TagManager:
   - Shotgun
   - Health
   - MeleeRange
+  - DamageUpgrade
+  - KnockbackUpgrade
+  - BulletSpeedUpgrade
+  - UpgradePanel
+  - UpgradeCritMultiplier
+  - UpgradeHealth
+  - UpgradeCritChance
+  - ReduceFireRate
   layers:
   - Default
   - TransparentFX
