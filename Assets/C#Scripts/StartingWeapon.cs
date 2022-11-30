@@ -11,6 +11,7 @@ public class StartingWeapon : MonoBehaviour
 
     void Start() {
     	// if basic gun or shotgun start out as active, disable them
+        player.GetComponent<Player>().canMove = false;
     	Time.timeScale = 0f;
     	if (player.transform.GetChild(3).gameObject.activeInHierarchy) {
     		player.transform.GetChild(3).gameObject.SetActive(false);
@@ -22,12 +23,14 @@ public class StartingWeapon : MonoBehaviour
 
     	//Basic gun is set active, game starts
     public void ChooseBasicGun() {
+        player.GetComponent<Player>().canMove = true;
     	player.transform.GetChild(3).gameObject.SetActive(true);
     	panel.SetActive(false);
     	Time.timeScale = 1f;
     }
     	//shotgun is set active
     public void ChooseShotgun() {
+        player.GetComponent<Player>().canMove = true;
     	player.transform.GetChild(4).gameObject.SetActive(true);
     	panel.SetActive(false);
     	Time.timeScale = 1f;

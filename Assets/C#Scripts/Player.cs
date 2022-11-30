@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rb;  
     public Vector3 movement;
+    public bool canMove = true;
 
     Vector2 playerPos;
 
@@ -55,13 +56,15 @@ public class Player : MonoBehaviour
 
     void MovePlayer() {
         //rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed*Time.deltaTime;
-        movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = movement * moveSpeed;
-        if (Input.GetKey(KeyCode.A)) {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            transform.eulerAngles = new Vector3(0,0,0);
+        if (canMove) {
+            movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            rb.velocity = movement * moveSpeed;
+            if (Input.GetKey(KeyCode.A)) {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                transform.eulerAngles = new Vector3(0,0,0);
+            }
         }
 
         // if (Input.GetKey(KeyCode.W))
