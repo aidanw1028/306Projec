@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopup: {fileID: 8369771934319550274, guid: ae41d810ff7f0c749ba63cc2af21333c, type: 3}
   lifeTime: 2.5
-  moveSpeed: 6
+  moveSpeed: 8
   dmg: 25
   knockBackstrength: 8
 --- !u!1 &3474726223357239680

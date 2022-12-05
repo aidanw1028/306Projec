@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     // Core vars
-    [SerializeField] private float health = 50.0f;
+    [SerializeField] private float health = 30.0f;
     [SerializeField] private float moveSpeed = 1.0f;
     [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
          if (GameManager.instance.player && Time.time > fireTime) {
             EnemyProjectile p = Instantiate(projectile, transform.position, Quaternion.identity);
 
-            float fireRateVariation = Random.Range(-0.5f, 0.5f);
+            float fireRateVariation = Random.Range(-1.0f, 1.0f);
             fireTime = Time.time + fireRate+fireRateVariation;
          }
      }

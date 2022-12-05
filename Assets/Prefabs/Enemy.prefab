@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 4414967379255871425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.005653746, y: 0.0042685075, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8217225291140121448}
@@ -185,9 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3ce92bc3b958c41952eebf62049c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  moveSpeed: 1
-  damage: 25
+  health: 30
+  moveSpeed: 0.7
+  damage: 20
   damageRate: 1
   projectile: {fileID: -1473803618639258785, guid: 939c3bb2c48709449a36e3ad8e8fae5a, type: 3}
   fireRate: 3
