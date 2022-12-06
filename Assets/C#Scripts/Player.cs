@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float damage = 50.0f;
     [SerializeField] public HealthBar healthbar;
+    [SerializeField] public BullettimeTimer btTimer;
     private float maxHealth = 500.0f;
 
     // Shield vars
@@ -22,6 +23,12 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;  
     public Vector3 movement;
     public bool canMove = true;
+
+    //bullet time vars
+    private bool inBulletTime = false;
+    private bool hasBulletTime = true;
+    private float bulletTimeTime;
+    private float nextBulletTime;
 
     Vector2 playerPos;
 
@@ -41,6 +48,7 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
         UseShield();
+        UseBulletTime();
 
         //set bounds for the player between the edges of the road
         if (transform.position.y >= -1)
@@ -93,6 +101,37 @@ public class Player : MonoBehaviour
             Shield s = Instantiate(shield, transform.position, transform.rotation);
 
             shieldTime = Time.time + rechargeTime;
+        }
+    }
+    void UseBulletTime()
+    {
+        
+       
+        if(Input.GetKey(KeyCode.V) && hasBulletTime && Time.time >= nextBulletTime)
+        {
+            hasBulletTime = false;
+            Time.timeScale = 0.5f;
+            moveSpeed = 6.0f;
+            bulletTimeTime = Time.time + 2.5f;
+            inBulletTime = true;
+            btTimer.SetMaxTime(2.5f);
+        }
+        else if(inBulletTime && Time.time >= bulletTimeTime)
+        {
+            Time.timeScale = 1.0f;
+            moveSpeed = 3.0f;
+            inBulletTime = false;
+            nextBulletTime = Time.time + 10.0f;
+            
+        }
+        else if(inBulletTime)
+        {
+            btTimer.SetRemainingTime(bulletTimeTime - Time.time);
+        }
+        else if(Time.time >= nextBulletTime)
+        {
+            hasBulletTime = true;
+            btTimer.ResetTimer();
         }
     }
 
