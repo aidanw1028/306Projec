@@ -7,7 +7,7 @@ public class UpgradeManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject basicGun;
     [SerializeField] private GameObject shotgun;
-    [SerializeField] private GameObject player;
+    [SerializeField] private Player player;
 
     //Basic upgrade values
     private float damageBonus = 0.25f;
@@ -17,12 +17,15 @@ public class UpgradeManager : MonoBehaviour
     private float bulletSpeedBonus = 1.0f;
     private float healthBonus = 100;
     private float fireRateReduction = -0.1f;
+    private float shieldCooldown = 0.2f;
+    private float shieldLife = 0.5f;
 
     private float upgradeRate = 30.0f;
     private float upgradeTime = 30;
     private GameObject panel;
-    private int numUpgrades = 7;
+    private int numUpgrades = 10;
     private int chosenWeapon;
+    private bool hasGunUpgrade;
 
     private GameObject damageButton;
     private GameObject knockbackButton;
@@ -31,6 +34,10 @@ public class UpgradeManager : MonoBehaviour
     private GameObject playerHealthButton;
     private GameObject critChanceButton;
     private GameObject fireRateButton;
+    private GameObject shieldCooldownButton;
+    private GameObject ShieldLifeButton;
+    private GameObject BasicGunUpgradeButton;
+    private GameObject ShotgunUpgradeButton;
 
 
     private void Start()
@@ -50,6 +57,16 @@ public class UpgradeManager : MonoBehaviour
         critChanceButton = GameObject.FindGameObjectWithTag("UpgradeCritChance");
 
         fireRateButton = GameObject.FindGameObjectWithTag("ReduceFireRate");
+
+        shieldCooldownButton = GameObject.FindGameObjectWithTag("ReduceShieldCooldown");
+
+        ShieldLifeButton = GameObject.FindGameObjectWithTag("UpgradeShieldLife");
+
+        BasicGunUpgradeButton = GameObject.FindGameObjectWithTag("UpgradeBasicGun");
+
+        ShotgunUpgradeButton = GameObject.FindGameObjectWithTag("UpgradeShotgun");
+
+        player = GameManager.instance.player;
         panel.SetActive(false);
         SetAllFalse();
     }
@@ -58,13 +75,13 @@ public class UpgradeManager : MonoBehaviour
     void Update()
     {
         SetActiveWeapon();
-        upgradeDelay();   
+        upgradeDelay();
     }
 
 
     void upgradeDelay()
     {
-        if (Time.time > upgradeTime)
+        if (Time.timeSinceLevelLoad > upgradeTime)
         {
             Debug.Log("Upgrade");
             Time.timeScale = 0;
@@ -76,7 +93,7 @@ public class UpgradeManager : MonoBehaviour
             SetUpgradeButton(FindButton(upgradeNums[0]), 1);
             SetUpgradeButton(FindButton(upgradeNums[1]), 2);
             SetUpgradeButton(FindButton(upgradeNums[2]), 3);
-            upgradeTime = Time.time + upgradeRate;
+            upgradeTime = Time.timeSinceLevelLoad + upgradeRate;
         }
     }
 
@@ -86,10 +103,13 @@ public class UpgradeManager : MonoBehaviour
         List<int> randomList = new List<int>();
         for (int i = 0; i < max; i++)
         {
-            int numToAdd = Random.Range(0, max+1);
+            int numToAdd = Random.Range(0, max + 1);
             while (randomList.Contains(numToAdd))
             {
-                numToAdd = Random.Range(0, max+1);
+                if (!hasGunUpgrade && !(hasGunUpgrade && numToAdd == 9))
+                {
+                    numToAdd = Random.Range(0, max + 1);
+                }
             }
             randomList.Add(numToAdd);
         }
@@ -128,6 +148,28 @@ public class UpgradeManager : MonoBehaviour
                 fireRateButton.SetActive(true);
                 return fireRateButton;
 
+            case 7:
+                shieldCooldownButton.SetActive(true);
+                return shieldCooldownButton;
+
+            case 8:
+                ShieldLifeButton.SetActive(true);
+                return ShieldLifeButton;
+
+            case 9:
+                if (chosenWeapon == 1)
+                {
+                    BasicGunUpgradeButton.SetActive(true);
+                    return BasicGunUpgradeButton;
+                }
+
+                else if (chosenWeapon == 2)
+                {
+                    ShotgunUpgradeButton.SetActive(true);
+                    return ShotgunUpgradeButton;
+                }
+                return null;
+
             default:
                 return null;
         }
@@ -136,14 +178,19 @@ public class UpgradeManager : MonoBehaviour
 
     private void SetAllFalse()
     {
-    damageButton.SetActive(false);
-    knockbackButton.SetActive(false);
-    bSpeedButton.SetActive(false);
-    CritMultButton.SetActive(false);
-    playerHealthButton.SetActive(false);
-    critChanceButton.SetActive(false);
-    fireRateButton.SetActive(false);
-}
+        damageButton.SetActive(false);
+        knockbackButton.SetActive(false);
+        bSpeedButton.SetActive(false);
+        CritMultButton.SetActive(false);
+        playerHealthButton.SetActive(false);
+        critChanceButton.SetActive(false);
+        fireRateButton.SetActive(false);
+        fireRateButton.SetActive(false);
+        shieldCooldownButton.SetActive(false);
+        ShieldLifeButton.SetActive(false);
+        BasicGunUpgradeButton.SetActive(false);
+        ShotgunUpgradeButton.SetActive(false);
+    }
 
     private void SetUpgradeButton(GameObject button, int buttonNumber)
     {
@@ -280,5 +327,38 @@ public class UpgradeManager : MonoBehaviour
         {
             chosenWeapon = 2;
         }
+    }
+
+
+    public void UpgradeShieldCooldown()
+    {
+        player.DecreaseShieldCooldown(shieldCooldown);
+        panel.SetActive(false);
+        SetAllFalse();
+        Time.timeScale = 1;
+    }
+
+    public void IncreaseShieldLifetime()
+    {
+        player.IncreaseShieldLifetime(shieldLife);
+        panel.SetActive(false);
+        SetAllFalse();
+        Time.timeScale = 1;
+    }
+
+    public void UpgradeBasicgun()
+    {
+        basicGun.GetComponent<BasicGun>().SetMultishot();
+        panel.SetActive(false);
+        SetAllFalse();
+        Time.timeScale = 1;
+    }
+
+    public void UpgradeShotgun()
+    {
+        shotgun.GetComponent<Shotgun>().SetUpgrade();
+        panel.SetActive(false);
+        SetAllFalse();
+        Time.timeScale = 1;
     }
 }

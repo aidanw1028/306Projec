@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool hasShield = true;
     private float rechargeTime = 5.0f; // The Recharge time of the shield
     private float shieldTime; // Time since shield was last used
+    private float shieldLifeBonus = 0.0f;
 
     public Rigidbody2D rb;  
     public Vector3 movement;
@@ -99,6 +100,7 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.Space) && hasShield is true && Time.time >= shieldTime){
             // Shield s = Instantiate(shield, transform.position + (transform.right),transform.rotation);
             Shield s = Instantiate(shield, transform.position, transform.rotation);
+            s.IncreaseLifetime(shieldLifeBonus);
 
             shieldTime = Time.time + rechargeTime;
         }
@@ -171,5 +173,15 @@ public class Player : MonoBehaviour
     {
         maxHealth += increase;
         healthbar.SetMaxHP(maxHealth);
+    }
+
+    public void DecreaseShieldCooldown(float decrease)
+    {
+        shieldTime -= decrease;
+    }
+
+    public void IncreaseShieldLifetime(float increase)
+    {
+        shieldLifeBonus += increase;
     }
 }
