@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
     	Debug.Log("Termination"); // just to check if its actually working in the editor
     	Application.Quit();
     }
+
+    public void LoadControls()
+    {
+        SceneManager.LoadScene("ControlScene");
+    }
 }
