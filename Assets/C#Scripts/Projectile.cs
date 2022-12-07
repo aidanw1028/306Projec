@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-    	if (other.transform.tag == "Enemy") {
+    	if (other.transform.tag == "Enemy" && other is BoxCollider2D) {
 
             int variation = Random.Range(-5, 5);
             bool isCrit = Random.Range(0, 100) < critChance;

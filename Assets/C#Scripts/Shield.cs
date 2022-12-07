@@ -5,7 +5,6 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 2.0f;
-    private float moveSpeed = 3.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +18,14 @@ public class Shield : MonoBehaviour
     }
 
     void moveShield(){
-        float step = moveSpeed * Time.deltaTime;
 
         // move shield towards the target location
         // transform.position = Vector2.MoveTowards(transform.position, GameManager.instance.player.transform.position + (transform.right), step);
        transform.position = GameManager.instance.player.transform.position;
+    }
+
+    public void IncreaseLifetime(float increase)
+    {
+        lifeTime += increase;
     }
 }
