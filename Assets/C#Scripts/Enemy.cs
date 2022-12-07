@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
     */
     void OnTriggerStay2D(Collider2D other){
         if (other.transform.tag == "Player" && Time.time > damageTime && other is BoxCollider2D){
-            other.transform.GetComponent<Player>().TakeDamage(damage);
+            other.transform.GetComponent<Player>().TakeDamage(50);
             damageTime = Time.time + damageRate;
             Debug.Log("Enemy Hit");
         }

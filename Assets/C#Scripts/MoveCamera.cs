@@ -51,5 +51,9 @@ public class MoveCamera : MonoBehaviour
         if(other.transform.tag == "Player"){
             Destroy(refObj);
         }
+
+        if(other.transform.tag == "Enemy"){
+            other.transform.GetComponent<Enemy>().TakeDamage(1000000);
+        }        
     }
 }

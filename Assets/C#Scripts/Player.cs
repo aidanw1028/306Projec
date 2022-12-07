@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     // hp vars
     public float health = 500.00f;
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float damage = 50.0f;
     [SerializeField] public HealthBar healthbar;
     [SerializeField] public BullettimeTimer btTimer;
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         {
             hasBulletTime = false;
             Time.timeScale = 0.5f;
-            moveSpeed = 6.0f;
+            moveSpeed = 10.0f;
             bulletTimeTime = Time.time + 2.5f;
             inBulletTime = true;
             btTimer.SetMaxTime(2.5f);
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
         else if(inBulletTime && Time.time >= bulletTimeTime)
         {
             Time.timeScale = 1.0f;
-            moveSpeed = 3.0f;
+            moveSpeed = 5.0f;
             inBulletTime = false;
             nextBulletTime = Time.time + 10.0f;
             

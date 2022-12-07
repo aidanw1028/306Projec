@@ -7,7 +7,7 @@ public class ShotgunBullet : MonoBehaviour
     public Transform damagePopup;
     private Rigidbody2D rb;
     private float lifeTime = 0.6f;
-    private float moveSpeed = 7.0f;
+    private float moveSpeed = 8.0f;
     private float dmg = 25.0f;
     private float knockBackstrength = 6;
     private int critChance = 5;
