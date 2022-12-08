@@ -7,7 +7,7 @@ public class BasicGun : MonoBehaviour
 
 {
     [SerializeField] private Projectile projectile;
-    [SerializeField] private static float fireRate = 1.0f;
+    [SerializeField] private static float fireRate = 0.75f;
     [SerializeField] private float fireTime;
     private bool dupeShot = false;
     private float damageMultiplier = 1.0f;
