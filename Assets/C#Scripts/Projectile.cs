@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
         if (other.transform.tag == "Wall") {
             other.transform.GetComponent<Obstacle>().TakeDamage(dmg);
             Destroy(this.gameObject);
+            Debug.Log("ye");
         }
     }
 
