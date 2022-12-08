@@ -36,6 +36,12 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject);
     	}
     }
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.transform.tag == "Wall") {
+            other.transform.GetComponent<Obstacle>().TakeDamage(dmg);
+            Destroy(this.gameObject);
+        }
+    }
 
     public void ApplyMultipliers(float damage, float knockback, float speed, int chance, float multiplier)
     {
