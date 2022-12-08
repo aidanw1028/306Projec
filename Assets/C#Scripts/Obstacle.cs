@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-	private float health = 50.0f;
+	private float health = 80.0f;
 
 	public void TakeDamage(float damage) {
         health -=damage;
