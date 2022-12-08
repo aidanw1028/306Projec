@@ -2994,6 +2994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6487b07bf7dc0f4083e8ea1aad32cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicGun: {fileID: 1264925261}
+  shotgun: {fileID: 1912675286}
   health: 500
   moveSpeed: 5
   damage: 50
@@ -3004,6 +3006,7 @@ MonoBehaviour:
   rb: {fileID: 657645401}
   movement: {x: 0, y: 0, z: 0}
   canMove: 1
+  inBulletTime: 0
   mainCam: {fileID: 0}
 --- !u!4 &657645400
 Transform:

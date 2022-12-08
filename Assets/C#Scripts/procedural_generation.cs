@@ -5,6 +5,7 @@ using UnityEngine;
 public class procedural_generation : MonoBehaviour
 {
     public GameObject Obstacle;
+    public Sprite[] obstacleSprites;
     
     public float maxY;
     public float minY;
@@ -17,11 +18,15 @@ public class procedural_generation : MonoBehaviour
     void Spawn()
     {
         //spawn enemies randomly
-        Debug.Log(transform.position.x);
+        int arrayIdx = Random.Range(0,obstacleSprites.Length);
+        Sprite obstacleSprite = obstacleSprites[arrayIdx];
+  
+
         float X = Random.Range((int)(transform.position.x)+10, (transform.position.x) + 30);
         float Y = Random.Range(minY, maxY);
 
-        Instantiate(Obstacle, new Vector3(X, Y, 0), transform.rotation);
+        GameObject newObstacle = Instantiate(Obstacle, new Vector3(X, Y, 0), transform.rotation);
+        newObstacle.GetComponent<SpriteRenderer>().sprite = obstacleSprite;
          
     }
     // Update is called once per frame
