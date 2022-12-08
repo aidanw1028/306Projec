@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject prefabEnemy;
     public Camera mainCam;
     private float spawnTimer;
-    private float spawnRate = 4.5f;
+    private float spawnRate = 4.0f;
     private float spawnIncreaseTime = 30.0f;
     private float increaseTimer = 30;
     // Start is called before the first frame update

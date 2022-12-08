@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     public UnityEvent OnBegin, OnDone;
 
     public Healthpack healthPack;
-    private float healthProb = 6;
+    private float healthProb = 15;
 
 
     [SerializeField] private SpriteRenderer objRend;  
