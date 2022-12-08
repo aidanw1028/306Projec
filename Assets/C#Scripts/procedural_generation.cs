@@ -19,7 +19,7 @@ public class procedural_generation : MonoBehaviour
     {
         //spawn enemies randomly
         int arrayIdx = Random.Range(0,obstacleSprites.Length);
-        Sprite obstacleSprite = obstacleSprites[arrayIdx];
+        Sprite obstacleSprite = obstacleSprites[arrayIdx-1];
   
 
         float X = Random.Range((int)(transform.position.x)+10, (transform.position.x) + 30);

@@ -350,6 +350,7 @@ public class UpgradeManager : MonoBehaviour
     {
         basicGun.GetComponent<BasicGun>().SetMultishot();
         panel.SetActive(false);
+        hasGunUpgrade = true;
         SetAllFalse();
         Time.timeScale = 1;
     }
@@ -358,6 +359,7 @@ public class UpgradeManager : MonoBehaviour
     {
         shotgun.GetComponent<Shotgun>().SetUpgrade();
         panel.SetActive(false);
+        hasGunUpgrade = true;
         SetAllFalse();
         Time.timeScale = 1;
     }
