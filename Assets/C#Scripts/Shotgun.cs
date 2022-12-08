@@ -21,12 +21,22 @@ public class Shotgun : MonoBehaviour
     {
         Shoot();
     }
-
+    public void EnterBulletTime()
+    {
+        fireRate = fireRate/ 2.0f;
+        fireTime = Time.time;
+    }
+    
+    public void ExitBulletTime()
+    {
+        fireRate = fireRate * 2.0f ;
+    
+    }
+    
     private void Shoot()
     {
         if (Time.time >= fireTime)
         {
-
             ShotgunBullet b = Instantiate(projectile, transform.position, transform.rotation);
             audioSource.PlayOneShot(shootingClip);
             b.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);

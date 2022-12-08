@@ -23,7 +23,16 @@ public class BasicGun : MonoBehaviour
     {
         Shoot();
     }
-
+    public void EnterBulletTime()
+    {
+        fireRate = fireRate / 2.0f;
+        fireTime = Time.time;
+    }
+ 
+    public void ExitBulletTime()
+    {
+        fireRate = fireRate * 2.0f; ;
+    }
     private void Shoot()
     {
         if (Time.time >= fireTime)

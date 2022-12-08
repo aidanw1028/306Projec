@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-
+    public BasicGun basicGun;
+    public Shotgun shotgun;
     // hp vars
     public float health = 500.00f;
     [SerializeField] private float moveSpeed = 5.0f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] public HealthBar healthbar;
     [SerializeField] public BullettimeTimer btTimer;
     public float maxHealth = 500.0f;
+
 
     // Shield vars
     [SerializeField] private Shield shield;
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour
     public bool canMove = true;
 
     //bullet time vars
-    private bool inBulletTime = false;
+    public bool inBulletTime = false;
     private bool hasBulletTime = true;
     private float bulletTimeTime;
     private float nextBulletTime;
@@ -117,6 +119,9 @@ public class Player : MonoBehaviour
             bulletTimeTime = Time.time + 2.5f;
             inBulletTime = true;
             btTimer.SetMaxTime(2.5f);
+            shotgun.EnterBulletTime();
+            basicGun.EnterBulletTime();
+
         }
         else if(inBulletTime && Time.time >= bulletTimeTime)
         {
@@ -124,7 +129,9 @@ public class Player : MonoBehaviour
             moveSpeed = 5.0f;
             inBulletTime = false;
             nextBulletTime = Time.time + 10.0f;
-            
+            shotgun.ExitBulletTime();
+            basicGun.ExitBulletTime();
+
         }
         else if(inBulletTime)
         {
@@ -134,6 +141,7 @@ public class Player : MonoBehaviour
         {
             hasBulletTime = true;
             btTimer.ResetTimer();
+  
         }
     }
 
