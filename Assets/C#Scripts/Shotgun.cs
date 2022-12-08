@@ -13,6 +13,8 @@ public class Shotgun : MonoBehaviour
     private int critChance = 5;
     private float critMultiplier = 1.75f;
     private bool upgraded = false;
+    public AudioSource audioSource;
+    public AudioClip shootingClip;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +28,7 @@ public class Shotgun : MonoBehaviour
         {
 
             ShotgunBullet b = Instantiate(projectile, transform.position, transform.rotation);
+            audioSource.PlayOneShot(shootingClip);
             b.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
             b.SetDirection(0.2f);
 

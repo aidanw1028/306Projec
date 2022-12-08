@@ -13,20 +13,10 @@ public class MeleeAttack : MonoBehaviour
     private float knockBackstrength = 6;
     private float critChance = 10;
     private float critMultiplier = 1.50f;
+    public AudioSource audioSource;
+    public AudioClip shootingClip;
 
     public GameObject attackEffect;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.transform.tag == "Enemy" && Time.time >= slashTime){
@@ -39,6 +29,7 @@ public class MeleeAttack : MonoBehaviour
             }
 
             GameObject effect = Instantiate(attackEffect, transform.position + (transform.right), transform.rotation);
+            audioSource.PlayOneShot(shootingClip);
             Destroy(effect, 0.1f);
             other.transform.GetComponent<Enemy>().TakeDamage(dmg+variation);
             other.transform.GetComponent<Enemy>().PlayFeedback(this.gameObject, knockBackstrength);

@@ -15,6 +15,8 @@ public class BasicGun : MonoBehaviour
     private float speedMultiplier = 1.0f;
     private int critChance = 4;
     private float critMultiplier = 1.75f;
+    public AudioSource audioSource;
+    public AudioClip shootingClip;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +30,7 @@ public class BasicGun : MonoBehaviour
         {
             Projectile a = Instantiate(projectile, transform.position, transform.rotation);
             a.ApplyMultipliers(damageMultiplier, knockbackMultiplier, speedMultiplier, critChance, critMultiplier);
+            audioSource.PlayOneShot(shootingClip);
 
             if (dupeShot)
             {
