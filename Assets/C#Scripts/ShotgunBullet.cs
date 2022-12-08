@@ -15,6 +15,16 @@ public class ShotgunBullet : MonoBehaviour
 
     void Start()
     {
+        float health = GameManager.instance.player.health;
+        float maxHealth = GameManager.instance.player.maxHealth;
+
+        if (health < (maxHealth / 2))
+        {
+            critChance += 5;
+            dmg += 3;
+        }
+
+
         Destroy(this.gameObject, lifeTime);
     }
 

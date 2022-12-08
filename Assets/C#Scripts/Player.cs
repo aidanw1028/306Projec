@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float damage = 50.0f;
     [SerializeField] public HealthBar healthbar;
     [SerializeField] public BullettimeTimer btTimer;
-    private float maxHealth = 500.0f;
+    public float maxHealth = 500.0f;
 
     // Shield vars
     [SerializeField] private Shield shield;
