@@ -52,10 +52,9 @@ public class ShotgunBullet : MonoBehaviour
             DamagePopup.Create(other.transform.GetComponent<Enemy>().transform.position, (int)dmg + variation, damagePopup, isCrit);
             Destroy(this.gameObject);
         }
-    }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.transform.tag == "Wall") {
+        if (other.transform.tag == "Wall")
+        {
             other.transform.GetComponent<Obstacle>().TakeDamage(dmg);
             Destroy(this.gameObject);
         }
