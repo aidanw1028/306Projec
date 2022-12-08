@@ -14,7 +14,7 @@ public class UpgradeManager : MonoBehaviour
     private float knockbackBonus = 0.25f;
     private int criticalChanceBonus = 5;
     private float criticalMultiplierBonus = 0.25f;
-    private float bulletSpeedBonus = 1.0f;
+    private float bulletSpeedBonus = 0.2f;
     private float healthBonus = 100;
     private float fireRateReduction = -0.1f;
     private float shieldCooldown = 0.2f;
