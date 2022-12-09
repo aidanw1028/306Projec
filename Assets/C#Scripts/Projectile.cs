@@ -60,7 +60,15 @@ public class Projectile : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other) {
         if (other.transform.tag == "Wall") {
+            int variation = Random.Range(-5, 5);
+            bool isCrit = Random.Range(0, 100) < critChance;
             other.transform.GetComponent<Obstacle>().TakeDamage(dmg);
+            if (isCrit)
+            {
+                dmg *= critMultiplier;
+            }
+            DamagePopup.Create(other.transform.GetComponent<Obstacle>().transform.position, (int)dmg+variation, damagePopup, isCrit);
+
             Destroy(this.gameObject);
         }
     }

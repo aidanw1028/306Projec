@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     private float heavyEnemySpawnRate = 30.0f;
     private float spawnIncreaseTime = 30.0f;
     private float increaseTimer = 20;
-    private float increaseHeavyTimer = 60.0f;
+    private float increaseHeavyTimer = 45.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,14 +48,14 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time > increaseTimer)
         {
            
-            if (spawnRate <= 1.25f) {
-                spawnRate = 1.25f;
+            if (spawnRate <= 1.00f) {
+                spawnRate = 1.00f;
                 buffEnemy();
         
             }
             else {
                 buffEnemy();
-                spawnRate -= 0.20f;
+                spawnRate -= 0.575f;
 
             }
             increaseTimer = Time.time + spawnIncreaseTime;

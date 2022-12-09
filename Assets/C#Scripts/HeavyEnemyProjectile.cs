@@ -6,9 +6,9 @@ public class HeavyEnemyProjectile : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    [SerializeField] private float lifeTime = 2.5f;
+    [SerializeField] private float lifeTime = 7.5f;
     [SerializeField] private float moveSpeed = 2.5f;
-    private float dmg = 50.0f;
+    public float dmg = 50.0f;
 
 
     void Start()
@@ -38,7 +38,11 @@ public class HeavyEnemyProjectile : MonoBehaviour
     }
 
     public void increaseDMG() {
-        dmg += 5.0f;
+        dmg += 10.0f;
         Debug.Log(dmg);
+    }
+
+    public void reset() {
+    	dmg = 50.0f;
     }
 }

@@ -8,7 +8,7 @@ public class EnemyProjectile : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float lifeTime = 2.5f;
     [SerializeField] private float moveSpeed = 3.0f;
-    private float dmg = 25.0f;
+    public float dmg = 25.0f;
 
 
     void Start()
@@ -40,6 +40,10 @@ public class EnemyProjectile : MonoBehaviour
     public void increaseDMG() {
         dmg += 2.5f;
         Debug.Log(dmg);
+    }
+
+    public void reset() {
+        dmg = 25.0f;
     }
 }
 

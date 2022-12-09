@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public GameObject HeavyEnemy;
+    public GameObject Enemy;
     public Text scoreText;
     private int score = 0;
 
@@ -13,6 +15,8 @@ public class GameManager : MonoBehaviour
 
      void Start() {
         SetScoreText();
+        HeavyEnemy.GetComponent<HeavyEnemy>().resetValues();
+        Enemy.GetComponent<Enemy>().resetValues();
     }
     
     void Awake() {

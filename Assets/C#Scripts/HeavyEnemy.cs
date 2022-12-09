@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class HeavyEnemy : MonoBehaviour
 {  
 	// Core vars
-    private float health = 100.0f;
+    public float health = 100.0f;
     [SerializeField] private float moveSpeed = 0.5f;
     [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
@@ -31,6 +31,11 @@ public class HeavyEnemy : MonoBehaviour
     void Update() {
         Shoot();
         Move();
+    }
+
+    public void resetValues() {
+    	health = 100.0f;
+    	projectile.GetComponent<HeavyEnemyProjectile>().reset();
     }
 
     /**
@@ -93,7 +98,7 @@ public class HeavyEnemy : MonoBehaviour
     }
 
     public void increaseStats() {
-        health += 10.0f;
+        health += 25.0f;
         projectile.GetComponent<HeavyEnemyProjectile>().increaseDMG();
     }
 

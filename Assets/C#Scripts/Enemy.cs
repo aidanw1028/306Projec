@@ -34,6 +34,11 @@ public class Enemy : MonoBehaviour
         Debug.Log(health);
     }
 
+    public void resetValues() {
+        health = 30.0f;
+        projectile.GetComponent<EnemyProjectile>().reset();
+    }
+
     /**
     * Takes damage when getting shot
     */
@@ -94,7 +99,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void increaseStats() {
-        health += 2.5f;
+        health += 3.5f;
         projectile.GetComponent<EnemyProjectile>().increaseDMG();
     }
 
