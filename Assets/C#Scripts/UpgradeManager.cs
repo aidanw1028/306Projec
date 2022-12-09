@@ -83,13 +83,9 @@ public class UpgradeManager : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad > upgradeTime)
         {
-            Debug.Log("Upgrade");
             Time.timeScale = 0;
             panel.SetActive(true);
             List<int> upgradeNums = GenerateUniqueNumbers(numUpgrades);
-            Debug.Log(upgradeNums[0]);
-            Debug.Log(upgradeNums[1]);
-            Debug.Log(upgradeNums[2]);
             SetUpgradeButton(FindButton(upgradeNums[0]), 1);
             SetUpgradeButton(FindButton(upgradeNums[1]), 2);
             SetUpgradeButton(FindButton(upgradeNums[2]), 3);

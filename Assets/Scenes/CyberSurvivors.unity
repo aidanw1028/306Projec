@@ -8157,7 +8157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a387fa5b4c82f6743aaeef562465e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabEnemy: {fileID: 4414967379255871425, guid: 0a1a0b779cab33540b09fffbf0396982, type: 3}
+  lightEnemy: {fileID: 4414967379255871425, guid: 0a1a0b779cab33540b09fffbf0396982, type: 3}
+  heavyEnemy: {fileID: 4414967379255871425, guid: e06b4b007e2c7724f931ac2e877f8618, type: 3}
   mainCam: {fileID: 519420031}
 --- !u!4 &2140419002
 Transform:

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class HeavyEnemyProjectile : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
     [SerializeField] private float lifeTime = 2.5f;
-    [SerializeField] private float moveSpeed = 3.0f;
-    [SerializeField] private float dmg = 25.0f;
+    [SerializeField] private float moveSpeed = 2.5f;
+    [SerializeField] private float dmg = 50.0f;
 
 
     void Start()
@@ -38,8 +38,7 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     public void increaseDMG() {
-        dmg += 2.5f;
+        dmg += 5.0f;
         Debug.Log(dmg);
     }
 }
-

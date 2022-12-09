@@ -23,6 +23,7 @@ TagManager:
   - UpgradeShieldLife
   - UpgradeShotgun
   - UpgradeBasicGun
+  - HeavyEnemy
   layers:
   - Default
   - TransparentFX

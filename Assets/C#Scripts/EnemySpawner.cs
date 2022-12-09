@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject prefabEnemy;
+    public GameObject lightEnemy;
+    public GameObject heavyEnemy;
     public Camera mainCam;
     private float spawnTimer;
     private float spawnRate = 4.0f;
+    private float heavyEnemySpawnTimer = 30.0f;
+    private float heavyEnemySpawnRate = 30.0f;
     private float spawnIncreaseTime = 30.0f;
-    private float increaseTimer = 25;
+    private float increaseTimer = 20;
+    private float increaseHeavyTimer = 60.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,23 +37,49 @@ public class EnemySpawner : MonoBehaviour
             spawn.z = 0;
             spawn.x+=10;
             spawn.y = y;
-            Instantiate(prefabEnemy, spawn,transform.rotation);
+            Instantiate(lightEnemy, spawn,transform.rotation);
+            if (Time.time > heavyEnemySpawnTimer) {
+                spawn.y -= 1;
+                Instantiate(heavyEnemy, spawn, transform.rotation);
+                heavyEnemySpawnTimer = Time.time + heavyEnemySpawnRate;
+            }
             spawnTimer = Time.time + spawnRate;
         }
         if (Time.time > increaseTimer)
         {
-            Debug.Log("Lower enemy spawn rate");
+           
             if (spawnRate <= 1.25f) {
                 spawnRate = 1.25f;
+                buffEnemy();
+        
             }
             else {
-                spawnRate -= 0.40f;
+                buffEnemy();
+                spawnRate -= 0.30f;
+
             }
             increaseTimer = Time.time + spawnIncreaseTime;
+        }
+        if (Time.time > increaseHeavyTimer) {
+            if (heavyEnemySpawnRate <= 5.0f) {
+                heavyEnemySpawnRate = 5.0f;
+                buffHeavyEnemy();
+
+            }
+            else {
+                buffHeavyEnemy();
+                heavyEnemySpawnRate -= 5.0f;
+
+            }
+            increaseHeavyTimer = Time.time + increaseHeavyTimer;
         }
     }
 
     void buffEnemy() {
-        prefabEnemy.GetComponent<Enemy>().increaseStats();
+        lightEnemy.GetComponent<Enemy>().increaseStats();
+    }
+
+    void buffHeavyEnemy() {
+        heavyEnemy.GetComponent<HeavyEnemy>().increaseStats();
     }
 }

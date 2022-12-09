@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
-{
-    // Core vars
-    [SerializeField] private float health = 30.0f;
-    [SerializeField] private float moveSpeed = 1.0f;
+public class HeavyEnemy : MonoBehaviour
+{  
+	// Core vars
+    [SerializeField] private float health = 150.0f;
+    [SerializeField] private float moveSpeed = 0.5f;
     [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
     private float damageTime;
         
 
     //projectile vars
-    [SerializeField] private EnemyProjectile projectile;
+    [SerializeField] private HeavyEnemyProjectile projectile;
     [SerializeField] private float fireRate = 3.0f;
     [SerializeField] private float fireTime;
     [SerializeField] private Rigidbody2D rb2d;
@@ -46,12 +46,12 @@ public class Enemy : MonoBehaviour
                 Healthpack h = Instantiate(healthPack, transform.position, Quaternion.identity);
             }
             Destroy(this.gameObject);
-            GameManager.instance.AddPoints(1);
+            GameManager.instance.AddPoints(5);
         }
     }
     private void Shoot() {
          if (GameManager.instance.player && Time.time > fireTime) {
-            EnemyProjectile p = Instantiate(projectile, transform.position, Quaternion.identity);
+            HeavyEnemyProjectile p = Instantiate(projectile, transform.position, Quaternion.identity);
 
             float fireRateVariation = Random.Range(-1.0f, 1.0f);
             fireTime = Time.time + fireRate+fireRateVariation;
@@ -93,8 +93,8 @@ public class Enemy : MonoBehaviour
     }
 
     public void increaseStats() {
-        health += 2.5f;
-        projectile.GetComponent<EnemyProjectile>().increaseDMG();
+        health += 5.0f;
+        projectile.GetComponent<HeavyEnemyProjectile>().increaseDMG();
     }
 
     
@@ -141,3 +141,4 @@ public class Enemy : MonoBehaviour
         OnDone?.Invoke();
     }
 }
+

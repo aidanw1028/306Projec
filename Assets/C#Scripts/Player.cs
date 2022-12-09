@@ -66,15 +66,16 @@ public class Player : MonoBehaviour
     }
 
     void MovePlayer() {
-        movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.velocity = movement * moveSpeed;
-        if (Input.GetKey(KeyCode.A)) {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+        if (canMove) {
+            movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            rb.velocity = movement * moveSpeed;
+            if (Input.GetKey(KeyCode.A)) {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                transform.eulerAngles = new Vector3(0,0,0);
+            }
         }
-        if (Input.GetKey(KeyCode.D)) {
-            transform.eulerAngles = new Vector3(0,0,0);
-        }
-
         // if (Input.GetKey(KeyCode.W))
         // {
         //     transform.position += Vector3.up * moveSpeed * Time.deltaTime;

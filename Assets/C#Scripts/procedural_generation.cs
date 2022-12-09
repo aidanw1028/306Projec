@@ -37,7 +37,6 @@ public class procedural_generation : MonoBehaviour
 
         if (Time.time > SpawnTime)
         {
-            Debug.Log("Spawn");
             Spawn();
             SpawnTime = Time.time + TimeBetweenSpawn;
         }

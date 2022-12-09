@@ -44,6 +44,19 @@ public class Projectile : MonoBehaviour
             DamagePopup.Create(other.transform.GetComponent<Enemy>().transform.position, (int)dmg+variation, damagePopup, isCrit);
             Destroy(this.gameObject);
     	}
+        else if (other.transform.tag == "HeavyEnemy" && other is BoxCollider2D) {
+            int variation = Random.Range(-5, 5);
+            bool isCrit = Random.Range(0, 100) < critChance;
+            if (isCrit)
+            {
+                dmg *= critMultiplier;
+            }
+
+            other.transform.GetComponent<HeavyEnemy>().TakeDamage(dmg+variation);
+            other.transform.GetComponent<HeavyEnemy>().PlayFeedback(this.gameObject, knockBackstrength);
+            DamagePopup.Create(other.transform.GetComponent<HeavyEnemy>().transform.position, (int)dmg+variation, damagePopup, isCrit);
+            Destroy(this.gameObject);
+        }
     }
     void OnCollisionEnter2D(Collision2D other) {
         if (other.transform.tag == "Wall") {
