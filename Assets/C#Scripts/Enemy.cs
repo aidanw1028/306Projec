@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     // Core vars
-    [SerializeField] private float health = 30.0f;
+    private float health = 30.0f;
     [SerializeField] private float moveSpeed = 1.0f;
     [SerializeField] private float damage = 0.0f;
     [SerializeField] private float damageRate = 0.2f;
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     void Update() {
         Shoot();
         Move();
+        Debug.Log(health);
     }
 
     /**

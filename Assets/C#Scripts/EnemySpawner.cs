@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else {
                 buffEnemy();
-                spawnRate -= 0.30f;
+                spawnRate -= 0.20f;
 
             }
             increaseTimer = Time.time + spawnIncreaseTime;

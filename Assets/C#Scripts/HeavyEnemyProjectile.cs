@@ -8,7 +8,7 @@ public class HeavyEnemyProjectile : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float lifeTime = 2.5f;
     [SerializeField] private float moveSpeed = 2.5f;
-    [SerializeField] private float dmg = 50.0f;
+    private float dmg = 50.0f;
 
 
     void Start()
