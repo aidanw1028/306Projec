@@ -6,6 +6,7 @@ public class procedural_generation : MonoBehaviour
 {
     public GameObject Obstacle;
     public Sprite[] obstacleSprites;
+    public Camera cam;
     
     public float maxY;
     public float minY;
@@ -13,14 +14,13 @@ public class procedural_generation : MonoBehaviour
     public float TimeBetweenSpawn;
     private float SpawnTime;
 
-    private float camSpeed = .50f;
+    private float obstSpawner;
 
     void Spawn()
     {
         //spawn enemies randomly
-        int arrayIdx = Random.Range(0,obstacleSprites.Length);
-        Sprite obstacleSprite = obstacleSprites[arrayIdx];
-  
+        int arrayIdx = Random.Range(0,obstacleSprites.Length - 1);
+        Sprite obstacleSprite = obstacleSprites[arrayIdx];  
 
         float X = Random.Range((int)(transform.position.x)+10, (transform.position.x) + 30);
         float Y = Random.Range(minY, maxY);
@@ -31,11 +31,13 @@ public class procedural_generation : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-        transform.position = transform.position += Vector3.right * Time.deltaTime * camSpeed;
+    {   
+        obstSpawner = cam.GetComponent<MoveCamera>().camSpeed;
+        transform.position = transform.position += Vector3.right * Time.deltaTime * obstSpawner;
 
         if (Time.time > SpawnTime)
         {
+            Debug.Log("Spawn");
             Spawn();
             SpawnTime = Time.time + TimeBetweenSpawn;
         }

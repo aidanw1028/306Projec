@@ -36,5 +36,9 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void increaseDMG() {
+        dmg += 5.0f;
+    }
 }
 

@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTimer;
     private float spawnRate = 4.0f;
     private float spawnIncreaseTime = 30.0f;
-    private float increaseTimer = 30;
+    private float increaseTimer = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +38,17 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time > increaseTimer)
         {
             Debug.Log("Lower enemy spawn rate");
-            spawnRate -= 0.20f;
+            if (spawnRate <= 1.25f) {
+                spawnRate = 1.25f;
+            }
+            else {
+                spawnRate -= 0.40f;
+            }
             increaseTimer = Time.time + spawnIncreaseTime;
         }
+    }
+
+    void buffEnemy() {
+        prefabEnemy.GetComponent<Enemy>().increaseStats();
     }
 }

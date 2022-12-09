@@ -7,7 +7,7 @@ public class MoveCamera : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject refObj;
-    private float camSpeed = 0.50f;
+    public float camSpeed = 0.50f;
     private float scaleTime = 10.0f;
     private float camTime;
     void Start()
@@ -37,9 +37,8 @@ public class MoveCamera : MonoBehaviour
     
     private void scaleSpeed(){
         if(Time.time >= camTime){
-            camSpeed += 0.01f;
+            camSpeed += 0.05f;
 
-            Debug.Log("Speed Up");
             camTime = Time.time + scaleTime;
         }
     }

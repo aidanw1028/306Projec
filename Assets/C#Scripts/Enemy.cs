@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
                 Healthpack h = Instantiate(healthPack, transform.position, Quaternion.identity);
             }
             Destroy(this.gameObject);
+            GameManager.instance.AddPoints(1);
         }
     }
     private void Shoot() {
@@ -62,14 +64,20 @@ public class Enemy : MonoBehaviour
     // maybe this could've been done in Update(), but whatever
     // rest of the code I got from an online documentation, so bless up
     IEnumerator Flicker() {
-        Color originalColor = objRend.color; //get current color
+        var tempColor = "FF004A";
+        var m_Red = System.Convert.ToByte(tempColor.Substring(0, 2), 16);
+        var m_Green = System.Convert.ToByte(tempColor.Substring(2, 2), 16);
+        var m_Blue = System.Convert.ToByte(tempColor.Substring(4, 2), 16);
+
+        // always requires the alpha parameter
+        Color originalColor = this.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color ; //get current color
         float flashingFor = 0; 
         float flashSpeed = 0.125f; 
-        Color flashColor = Color.white;
+        Color flashColor = new UnityEngine.Color32(m_Red, m_Green, m_Blue, 255);
         float flashTime = 0.255f; // flash for this much time
         var newColor = flashColor;
         while(flashingFor<flashTime) {
-            objRend.color = newColor;
+            this.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = newColor;
             flashingFor += Time.deltaTime;
             yield return new WaitForSeconds(flashSpeed); // wait this much time before object can flash again
             flashingFor += flashSpeed;
@@ -82,6 +90,11 @@ public class Enemy : MonoBehaviour
             }
         }
 
+    }
+
+    public void increaseStats() {
+        health += 5.0f;
+        projectile.increaseDMG();
     }
 
     
